@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      .header {
+        background: cornflowerblue;
+        height: 6vh;
+      }
+      .footer {
+        background: orange;
+        height: 6vh;
+      }
+      .main {
+        background: red;
+        display: flex;
+        align-items: center;
+        height: 88vh;
+        position: relative;
+      }
+      .nav {
+        background: green;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: space-around; */
+        height: 100%;
+        width: 25vw;
+        position: relative;
+        /* HIDE */
+        transform: translateX(-100%);
+        /* overflow: hidden; */
+      }
+      .C {
+        background: blue;
+        position: relative;
+        height: 50%;
+        width: 100%;
+      }
+      .D {
+        background: yellow;
+        position: relative;
+        height: 50%;
+        width: 100%;
+      }
+      .btn {
+        background: transparent;
+        border: none;
+        color: white;
+      }
+      .btn-div {
+        background: green;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        position: absolute;
+        right: -50px;
+        height: 50px;
+        width: 50px;
+      }
+      .btn-active {
+        animation: mymove 0.5s;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes mymove {
+        from {
+          transform: translate(-100%);
+        }
+        to {
+          transform: translateX(0%);
+        }
+      }
+    </style>
+    <title>PlayGround</title>
+  </head>
+  <body>
+    <div class="header"></div>
+    <div class="main">
+      <div class="nav">
+        <div class="btn-div">
+          <button class="btn">open</button>
+        </div>
+        <div class="C"></div>
+        <div class="D"></div>
+      </div>
+    </div>
+    <div class="footer"></div>
+  </body>
+  <script>
+    const button = document.querySelector(".btn");
+    const nav = document.querySelector(".nav");
+    const html = document.body.parentNode;
+
+    function toggleClassMenu() {
+      nav.classList.toggle("btn-active");
+
+      if (nav.classList.contains("btn-active")) {
+        button.textContent = "close";
+      } else {
+        button.textContent = "open";
+      }
+    }
+
+    button.addEventListener("click", toggleClassMenu);
+
+    html.addEventListener("click", function (event) {
+      event.preventDefault();
+      if (button.contains(event.target)) {
+      } else {
+        nav.classList.remove("btn-active");
+        button.textContent = "open";
+      }
+    });
+  </script>
+</html>

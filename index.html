@@ -12,55 +12,84 @@
       }
       body {
         display: flex;
+        position: relative;
         flex-direction: column;
       }
       .header {
-        background: cornflowerblue;
+        background: rgba(100, 148, 237, 0.527);
         height: 6vh;
       }
       .footer {
-        background: orange;
+        background: rgba(255, 251, 0, 0.493);
         height: 6vh;
       }
       .main {
-        background: red;
+        background: rgba(255, 0, 0, 0.5);
         display: flex;
         align-items: center;
+        width: 100%;
         height: 88vh;
         position: relative;
       }
       .nav {
-        background: green;
+        background: rgba(0, 128, 0, 0.514);
         display: flex;
         flex-direction: column;
         align-items: center;
         /* justify-content: space-around; */
         height: 100%;
         width: 25vw;
-        position: relative;
+        position: absolute;
         /* HIDE */
         transform: translateX(-100%);
         /* overflow: hidden; */
+        z-index: 1;
+      }
+      .container {
+        padding: 50px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.5);
+        /* border-radius: 6px; */
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .box-1 {
+        padding: 50px;
+        width: 360px;
+        height: 480px;
+        /* display: flex; */
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(17, 13, 228, 0.5);
+        border-radius: 6px;
+        /* position: absolute; */
+        /* top: 0;
+        left: 0; */
       }
       .C {
-        background: blue;
-        position: relative;
+        background: rgba(0, 0, 255, 0.521);
+        /* position: relative; */
         height: 50%;
         width: 100%;
       }
       .D {
-        background: yellow;
-        position: relative;
+        background: rgba(255, 255, 0, 0.514);
+        /* position: relative; */
         height: 50%;
         width: 100%;
       }
       .btn {
         background: transparent;
         border: none;
-        color: white;
       }
       .btn-div {
-        background: green;
+        background: rgba(0, 128, 0, 0.514);
+        border-radius: 50%;
         display: flex;
         justify-content: center;
         text-align: center;
@@ -69,16 +98,20 @@
         right: -50px;
         height: 50px;
         width: 50px;
+        color: white;
       }
+      .btn-div:hover{
+        cursor: pointer;
+      }
+
       .btn-active {
-        animation: mymove 0.5s;
-        animation-fill-mode: forwards;
+        animation: mymove 0.5s cubic-bezier(0.68, -0.55, 0.27, 1) forwards;
       }
 
       @keyframes mymove {
-        from {
+        /* from {
           transform: translate(-100%);
-        }
+        } */
         to {
           transform: translateX(0%);
         }
@@ -87,20 +120,25 @@
     <title>PlayGround</title>
   </head>
   <body>
-    <div class="header"></div>
-    <div class="main">
-      <div class="nav">
+    <header class="header"></header>
+    <main class="main">
+      <nav class="nav">
         <div class="btn-div">
-          <button class="btn">open</button>
+          <input class="btn" type="button">open</input>
         </div>
         <div class="C"></div>
         <div class="D"></div>
-      </div>
-    </div>
-    <div class="footer"></div>
+      </nav>
+      <section class="container">
+        <div class="box-1">
+
+        </div>
+      </section>  
+    </main>
+    <footer class="footer"></footer>
   </body>
   <script>
-    const button = document.querySelector(".btn");
+    const button = document.querySelector(".btn-div");
     const nav = document.querySelector(".nav");
     const html = document.body.parentNode;
 
